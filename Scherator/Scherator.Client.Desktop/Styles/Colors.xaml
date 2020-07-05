@@ -1,5 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Scherator.Client.Desktop.Styles">
-    
+
+    <Color x:Key="BackgroundLight">#FFFFFF</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}"/>
+
+    <Color x:Key="DisabledLight">#E1E5F2</Color>
+    <SolidColorBrush x:Key="DisabledLightBrush" Color="{StaticResource DisabledLight}"/>
+
 </ResourceDictionary>
