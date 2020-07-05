@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
+﻿using Scherator.Client.Desktop.Extensions;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Scherator.Client.Desktop.ViewModels
 {
@@ -19,11 +17,6 @@ namespace Scherator.Client.Desktop.ViewModels
         private Window window;
 
         /// <summary>
-        /// The size of the Resize Border around the window
-        /// </summary>
-        private int resizeBorder = 6;
-
-        /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
         private int mOuterMarginSize = 10;
@@ -38,9 +31,14 @@ namespace Scherator.Client.Desktop.ViewModels
         #region Public Members
 
         /// <summary>
+        /// The size of the Resize Border around the window
+        /// </summary>
+        public int ResizeBorder = 6;
+
+        /// <summary>
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
-        public Thickness ResizeBorderThickness { get { return new Thickness(resizeBorder + OuterMarginSize); } }
+        public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow based on WindowState
@@ -85,7 +83,33 @@ namespace Scherator.Client.Desktop.ViewModels
         /// <summary>
         /// The height of the title bar / caption of the window
         /// </summary>
-        public int CaptionHeight { get; set; } = 42;
+        public int TitleHeight { get; set; } = 42;
+
+        public GridLength TitleHeightGridLenght { get { return new GridLength(TitleHeight + ResizeBorder); } }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// The command to minimize the window
+        /// </summary>
+        public ICommand MinimizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to maximize the window
+        /// </summary>
+        public ICommand MaximizeCommand { get; set; }
+
+        /// <summary>
+        /// The command to close the window
+        /// </summary>
+        public ICommand CloseCommand { get; set; }
+
+        /// <summary>
+        /// The command to show the system menu of the window
+        /// </summary>
+        public ICommand MenuCommand { get; set; }
 
         #endregion
 
@@ -98,7 +122,8 @@ namespace Scherator.Client.Desktop.ViewModels
             this.window = window;
 
             // Listen out for the window resizing
-            this.window.StateChanged += (sender, e) => {
+            this.window.StateChanged += (sender, e) =>
+            {
 
                 // Fire off event of all properties that are affected by a resize
                 OnPropertyChanged(nameof(ResizeBorderThickness));
@@ -107,6 +132,12 @@ namespace Scherator.Client.Desktop.ViewModels
                 OnPropertyChanged(nameof(WindowRadius));
                 OnPropertyChanged(nameof(WindowCornerRadius));
             };
+
+            // Create commands
+            MinimizeCommand = new RelayCommand(() => window.WindowState = WindowState.Minimized);
+            MaximizeCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
+            CloseCommand = new RelayCommand(() => window.Close());
+            MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, window.GetMousePosition()));
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Scherator.Utils.IO
 {
-    public static class IOUtilities
+    public static class DiskUtilities
     {
         public static bool PathExists(string path)
         {
