@@ -83,7 +83,7 @@ namespace Scherator.Client.Desktop.ViewModels
         /// <summary>
         /// The height of the title bar / caption of the window
         /// </summary>
-        public int TitleHeight { get; set; } = 42;
+        public int TitleHeight { get; set; } = 32;
 
         public GridLength TitleHeightGridLenght { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
