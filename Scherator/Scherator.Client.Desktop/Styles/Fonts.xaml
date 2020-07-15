@@ -9,6 +9,7 @@
 
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">

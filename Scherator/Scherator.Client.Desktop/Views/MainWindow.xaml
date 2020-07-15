@@ -63,20 +63,14 @@
 
                                         <!-- Icon -->
                                         <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                            <Button Style="{StaticResource NormalWindowControlButton}">
-                                                <Button.Content>
-                                                    <ImageBrush ImageSource="/Assets/Images/Minimize.png" Stretch="Fill" TileMode="None" />
-                                                </Button.Content>
+                                            <Button Style="{StaticResource NormalWindowControlButton}" Command="{Binding MinimizeCommand}">
+                                                <Image ToolTip="Minimizar" Source="/Assets/Images/minimize.png" Stretch="Fill" />
                                             </Button>
-                                            <Button Style="{StaticResource NormalWindowControlButton}">
-                                                <Button.Content>
-                                                    <ImageBrush ImageSource="/Assets/Images/Maximize.png" Stretch="Fill" TileMode="None" />
-                                                </Button.Content>
+                                            <Button Style="{StaticResource NormalWindowControlButton}" Command="{Binding MaximizeCommand}">
+                                                <Image ToolTip="Maximizar" Source="/Assets/Images/maximize.png" Stretch="Fill" />
                                             </Button>
-                                            <Button Style="{StaticResource NormalWindowControlButton}">
-                                                <Button.Content>
-                                                    <ImageBrush ImageSource="/Assets/Images/Close.png" Stretch="Fill" TileMode="None" />
-                                                </Button.Content>
+                                            <Button Style="{StaticResource NormalWindowControlButton}" Command="{Binding CloseCommand}">
+                                                <Image ToolTip="Cerrar" Source="/Assets/Images/close.png" Stretch="Fill" />
                                             </Button>
                                         </StackPanel>
                                     </Grid>
