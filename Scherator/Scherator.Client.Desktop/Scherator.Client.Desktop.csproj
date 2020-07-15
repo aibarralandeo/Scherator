@@ -8,10 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\close-dark.png" />
     <None Remove="Assets\Images\close.png" />
     <None Remove="Assets\Images\favicon.ico" />
+    <None Remove="Assets\Images\maximize-dark.png" />
     <None Remove="Assets\Images\maximize.png" />
+    <None Remove="Assets\Images\minimize-dark.png" />
     <None Remove="Assets\Images\minimize.png" />
+    <None Remove="Assets\Images\restore-dark.png" />
     <None Remove="Assets\Images\restore.png" />
   </ItemGroup>
 
@@ -27,13 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\maximize.png" />
+    <Resource Include="Assets\Images\restore.png" />
+    <Resource Include="Assets\Images\minimize.png" />
     <Resource Include="Assets\Images\close.png" />
+    <Resource Include="Assets\Images\maximize-dark.png" />
+    <Resource Include="Assets\Images\restore-dark.png" />
+    <Resource Include="Assets\Images\minimize-dark.png" />
+    <Resource Include="Assets\Images\close-dark.png" />
     <Resource Include="Assets\Images\favicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\maximize.png" />
-    <Resource Include="Assets\Images\minimize.png" />
-    <Resource Include="Assets\Images\restore.png" />
   </ItemGroup>
 
 </Project>

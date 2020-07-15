@@ -1,4 +1,5 @@
 ﻿using Scherator.Client.Desktop.Extensions;
+using Scherator.Client.Desktop.Resources;
 using System.Windows;
 using System.Windows.Input;
 
@@ -31,6 +32,16 @@ namespace Scherator.Client.Desktop.ViewModels
         #region Public Members
 
         /// <summary>
+        /// The smallest width the window can go to
+        /// </summary>
+        public double WindowMinimumWidth { get; set; } = 400;
+
+        /// <summary>
+        /// The smallest height the window can go to
+        /// </summary>
+        public double WindowMinimumHeight { get; set; } = 400;
+
+        /// <summary>
         /// The size of the Resize Border around the window
         /// </summary>
         public int ResizeBorder = 6;
@@ -39,6 +50,11 @@ namespace Scherator.Client.Desktop.ViewModels
         /// The size of the resize border around the window, taking into account the outer margin
         /// </summary>
         public Thickness ResizeBorderThickness { get { return new Thickness(ResizeBorder + OuterMarginSize); } }
+
+        /// <summary>
+        /// The padding of the inner content of the main window
+        /// </summary>
+        public Thickness InnerContentPadding { get { return new Thickness(ResizeBorder); } }
 
         /// <summary>
         /// The margin around the window to allow for a drop shadow based on WindowState
@@ -138,6 +154,9 @@ namespace Scherator.Client.Desktop.ViewModels
             MaximizeCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => window.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, window.GetMousePosition()));
+
+            // Fix window resize issue
+            var resizer = new WindowResizer(window);
         }
     }
 }
